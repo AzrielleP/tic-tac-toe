@@ -11,4 +11,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+}
+
+.gameContainer{
+    display: grid;
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+}
+
+.gameContainer div{
+    height: 10em;
+    width: 10em;
+    border: 1px solid black;
 }
