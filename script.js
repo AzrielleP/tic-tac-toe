@@ -13,30 +13,41 @@ const Gameboard = (() =>{
         console.log(div);
     }
 
-    function checkWinner(){
-    
+    const player = (name, move) => {
+        return {name, move}
     }
+    
+    const player1 = player("Player 1", "X");
+    const player2 = player("Player 2", "O");
+    let turn = true;
 
-    function clickGrid(player){
+    function startGame(){
+        let player = null;
         gameContainer.addEventListener("click", event =>{
             if(event.target !== event.currentTarget){
-                gameboard[Number(event.target.className)] = player.move;
-                renderArray();
+                //This line checks whose turn is it. A turn value of true means player 1 gets to play.
+                turn ? player = player1 : player = player2;
+
+                // Check if the array doesn't have a value yet
+                if(gameboard[Number(event.target.className)] == "" ){
+                    gameboard[Number(event.target.className)] = player.move;
+                    renderArray();
+
+                    //Switch players by negating the value of turn
+                    turn = !turn;
+                }
          }
          event.stopPropagation();
         })
     }
-    return {clickGrid};
+
+
+    return {startGame};
 
     
 })();
 
-const player = (name, move) => {
-    return {name, move}
-}
-
-const player1 = player("Player 1", "X");
-const player2 = player("Player 2", "O");
 
 
-Gameboard.clickGrid(player1);
+
+Gameboard.startGame();
