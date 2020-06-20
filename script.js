@@ -1,18 +1,27 @@
 
 
 const Gameboard = (() =>{
-    let gameboard = ["x", "o", "x", "o"];
-
+    let gameboard = ["x", "o", "x", "o", "", "x", "", "o", "x"];
+    let gameContainer = document.querySelector(".gameContainer");
+    let div = gameContainer.getElementsByTagName("div");
+        
     return{
-        createGrid: ()=>{
-        let gameContainer = document.querySelector(".gameContainer");
-            for (let i = 0; i < 9; i++){
-                let grid = document.createElement("div");
-                grid.className = i;
-                gameContainer.appendChild(grid);
+        renderArray: ()=>{
+            for (let i =0; i <9; i++){
+                div[i].textContent = gameboard[i];
             }
+            console.log(div);
         }
     }
 })();
 
-Gameboard.createGrid();
+const player = (name, move) => {
+    return {name, move}
+}
+
+const player1 = player("Player 1", "X");
+const player2 = player("Player 2", "O");
+console.log(player2.name);
+console.log(player1.name);
+
+Gameboard.renderArray();
