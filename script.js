@@ -10,7 +10,6 @@ const Gameboard = (() =>{
         for (let i =0; i <9; i++){
             div[i].textContent = gameboard[i];
         }
-        console.log(div);
     }
 
     const player = (name, move) => {
@@ -20,6 +19,40 @@ const Gameboard = (() =>{
     const player1 = player("Player 1", "X");
     const player2 = player("Player 2", "O");
     let turn = true;
+
+    function checkWinner(winner){
+        let isWinner = (value) => value !== "" && value == winner.move;
+        let pattern1 = [0,3,6],
+            pattern2 = [1,4,7],
+            pattern3 = [2,5,8],
+            pattern4 = [0,4,8],
+            pattern5 = [2,4,6];
+        if(gameboard.slice(0,3).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(gameboard.slice(3,6).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(gameboard.slice(6,).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(pattern1.map((index) => gameboard[index]).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(pattern2.map((index) => gameboard[index]).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(pattern3.map((index) => gameboard[index]).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(pattern4.map((index) => gameboard[index]).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        else if(pattern5.map((index) => gameboard[index]).every(isWinner)){
+            console.log(`${winner.name} won`);
+        }
+        
+    }
 
     function startGame(){
         let player = null;
@@ -32,7 +65,9 @@ const Gameboard = (() =>{
                 if(gameboard[Number(event.target.className)] == "" ){
                     gameboard[Number(event.target.className)] = player.move;
                     renderArray();
-
+                    console.log(gameboard);
+                    checkWinner(player);
+                    
                     //Switch players by negating the value of turn
                     turn = !turn;
                 }
@@ -40,11 +75,7 @@ const Gameboard = (() =>{
          event.stopPropagation();
         })
     }
-
-
     return {startGame};
-
-    
 })();
 
 
