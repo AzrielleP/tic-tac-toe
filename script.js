@@ -1,5 +1,3 @@
-
-
 const Gameboard = (() =>{
     let gameboard = ["", "", "", "", "", "", "", "", ""];
     let gameContainer = document.querySelector(".gameContainer");
@@ -67,7 +65,9 @@ const Gameboard = (() =>{
                     renderArray();
                     console.log(gameboard);
                     checkWinner(player);
-                    
+                    if(!gameboard.includes("")){
+                        console.log("Draw")
+                    }
                     //Switch players by negating the value of turn
                     turn = !turn;
                 }
@@ -77,8 +77,5 @@ const Gameboard = (() =>{
     }
     return {startGame};
 })();
-
-
-
 
 Gameboard.startGame();
