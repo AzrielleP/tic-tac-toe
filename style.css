@@ -12,8 +12,6 @@ body{
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    height: 100vh;
-    position: relative;
 }
 
 .title{
@@ -40,6 +38,10 @@ body{
     justify-content: center;
 }
 
+.game{
+    position: relative;
+}
+
 .gameContainer{
     display: grid;
     grid-template: repeat(3, 1fr)/repeat(3, 1fr);
@@ -63,7 +65,6 @@ body{
     font: 1em "Open Sans", sans-serif;
 }
 
-
 .gameContainer div:hover{
     background-color: #8d8d8d5b;
 }
@@ -72,18 +73,21 @@ body{
     font: 4em "Ubuntu", sans-serif;
 }
 .resultContainer{
+    visibility: hidden;
     z-index: 1;
     width: 16.1em;
+    height: 16.1em;
     display:flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    top: -12.5em;
-    left: -0.05em;
+    top: -19.1em;
+    left: 3em;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .playAgain{
-    display: none;
+   
     outline: none;
     border: none;
     background: #8D8D8D;

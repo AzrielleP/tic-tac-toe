@@ -2,11 +2,12 @@ const Gameboard = (() =>{
     let gameboard = ["", "", "", "", "", "", "", "", ""];
     let gameContainer = document.querySelector(".gameContainer");
     let div = gameContainer.getElementsByTagName("div");
-        
+    let playerDisplay = document.querySelector(".playerDisplay");
+    let resultContainer = document.querySelector(".resultContainer");
 
     function renderArray(){
         for (let i =0; i <9; i++){
-            div[i].textContent = gameboard[i];
+            div[i].firstChild.textContent = gameboard[i];
         }
     }
 
@@ -26,30 +27,46 @@ const Gameboard = (() =>{
             pattern4 = [0,4,8],
             pattern5 = [2,4,6];
         if(gameboard.slice(0,3).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(gameboard.slice(3,6).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(gameboard.slice(6,).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(pattern1.map((index) => gameboard[index]).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(pattern2.map((index) => gameboard[index]).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(pattern3.map((index) => gameboard[index]).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(pattern4.map((index) => gameboard[index]).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
         else if(pattern5.map((index) => gameboard[index]).every(isWinner)){
-            console.log(`${winner.name} won`);
+            displayWinner(winner);
         }
+        else if(!gameboard.includes("")){
+            displayDraw();
+        }
+
         
+    }
+
+    function displayWinner(playerName){
+        resultContainer.style.visibility = "visible";
+        playerDisplay.textContent = `${playerName.name} won!`;
+        playerDisplay.style.backgroundColor = "#4FA370";
+    }
+
+    function displayDraw(){
+        resultContainer.style.visibility = "visible";
+        playerDisplay.textContent = "Draw";
+        playerDisplay.style.backgroundColor = "#8D8D8D";
     }
 
     function startGame(){
@@ -58,16 +75,13 @@ const Gameboard = (() =>{
             if(event.target !== event.currentTarget){
                 //This line checks whose turn is it. A turn value of true means player 1 gets to play.
                 turn ? player = player1 : player = player2;
-
+                playerDisplay.textContent = player.name;
                 // Check if the array doesn't have a value yet
                 if(gameboard[Number(event.target.className)] == "" ){
                     gameboard[Number(event.target.className)] = player.move;
                     renderArray();
                     console.log(gameboard);
                     checkWinner(player);
-                    if(!gameboard.includes("")){
-                        console.log("Draw")
-                    }
                     //Switch players by negating the value of turn
                     turn = !turn;
                 }
