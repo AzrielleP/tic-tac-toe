@@ -5,7 +5,6 @@ const Gameboard = (() =>{
     let playerDisplay = document.querySelector(".playerDisplay");
     let resultContainer = document.querySelector(".resultContainer");
     let playAgainButton = document.querySelector(".playAgain");
-
   
     function renderArray(){
         for (let i =0; i <9; i++){
@@ -27,11 +26,12 @@ const Gameboard = (() =>{
     
     const player1 = player("Player 1", "X", false);
     const player2 = player("Player 2", "O", false);
-    let turn = true;
-
+    let turn = null;
+   
     function startGame(){
+        turn = true;
         let player = null;
-        playerDisplay.textContent = `${player1.name}'s turn`;
+        displayPlayerTurn(player1);
         gameContainer.addEventListener("click", event =>{
             if(event.target !== event.currentTarget){
                 //This line checks whose turn is it. A turn value of true means player 1 gets to play.
@@ -40,56 +40,25 @@ const Gameboard = (() =>{
                 if(gameboard[Number(event.target.className)] == "" ){
                     gameboard[Number(event.target.className)] = player.move;
                     renderArray();
-                    checkWinner(player);
-                    if (!player.winner){
+                    if(checkWinner(player)){
+                        displayWinner(player);
+                    }
+                    else if(!gameboard.includes("")){
+                        displayDraw();
+                    }
+                    else{
                     //Switch players by negating the value of turn
                     turn = !turn;
                     turn ? player = player1 : player = player2;
-                    playerDisplay.textContent = `${player.name}'s turn`;
-                    player == player1 ? playerDisplay.style.backgroundColor = "#ED9797": playerDisplay.style.backgroundColor = "#65C5DA";
+                    displayPlayerTurn(player);
                     }
                 }
+                
          }
          event.stopPropagation();
         })
     }
     return {startGame};
-
-    function checkWinner(winner){
-        let isWinner = (value) => value !== "" && value == winner.move;
-        let pattern1 = [0,3,6],
-            pattern2 = [1,4,7],
-            pattern3 = [2,5,8],
-            pattern4 = [0,4,8],
-            pattern5 = [2,4,6];
-        if(gameboard.slice(0,3).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(gameboard.slice(3,6).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(gameboard.slice(6,).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(pattern1.map((index) => gameboard[index]).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(pattern2.map((index) => gameboard[index]).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(pattern3.map((index) => gameboard[index]).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(pattern4.map((index) => gameboard[index]).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(pattern5.map((index) => gameboard[index]).every(isWinner)){
-            displayWinner(winner);
-        }
-        else if(!gameboard.includes("")){
-            displayDraw();
-        }
-    }
 
     function playAnotherGame(){
         playAgainButton.addEventListener("click", () =>{
@@ -99,8 +68,63 @@ const Gameboard = (() =>{
                 div[i].style.boxShadow = "none";
             }
             renderArray();
+            playerDisplay.style.backgroundColor 
             resultContainer.style.visibility = "hidden";
+            turn = true;
+            startGame();
         })
+    }
+
+    function displayPlayerTurn(player){
+        playerDisplay.textContent = `${player.name}'s turn`;
+        if(player == player1){
+            playerDisplay.style.backgroundColor = "#ED9797"
+        }
+        else if (player == player2){
+            playerDisplay.style.backgroundColor = "#65C5DA"
+        }
+    }
+
+    function checkWinner(winner){
+        let isWinner = (value) => value !== "" && value == winner.move;
+        let pattern1 = [0,3,6],
+            pattern2 = [1,4,7],
+            pattern3 = [2,5,8],
+            pattern4 = [0,4,8],
+            pattern5 = [2,4,6];
+        if(gameboard.slice(0,3).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(gameboard.slice(3,6).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(gameboard.slice(6,).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(pattern1.map((index) => gameboard[index]).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(pattern2.map((index) => gameboard[index]).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(pattern3.map((index) => gameboard[index]).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(pattern4.map((index) => gameboard[index]).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        else if(pattern5.map((index) => gameboard[index]).every(isWinner)){
+            //displayWinner(winner);
+            return true;
+        }
+        
     }
 
     function displayWinner(playerName){

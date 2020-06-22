@@ -27,7 +27,6 @@ body{
 
 
 .playerDisplay{
-    background-color:#ED9797;
     color: white;
     height: 2.5em;
     width: 12.5em;
@@ -68,7 +67,7 @@ body{
     font: 4em "Ubuntu", sans-serif;
 }
 .resultContainer{
-    visibility: hidden;
+   visibility: hidden; 
     z-index: 1;
     width: 16.1em;
     height: 16.1em;
@@ -82,7 +81,6 @@ body{
 }
 
 .playAgain{
-   
     outline: none;
     border: none;
     background: #8D8D8D;
@@ -92,4 +90,88 @@ body{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: white;
     font: 2em bolder "Open Sans", sans-serif;
+}
+
+.enterPlayer{
+    visibility: hidden;
+    background-color: white;
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em 2em 3em;
+    margin: 2em;
+    width: 91vw;
+    height: 70vh;
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    top: 100px;
+    left: -1.1em;
+}
+
+.enterPlayer .mode{
+    font-weight: bold;
+    color: #8D8D8D;
+    margin: 1em;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.enterPlayer ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.enterPlayer .player{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.enterPlayer li{
+    margin-bottom: 1em;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.enterPlayer li div label,
+.enterPlayer li  div p{
+    display: inline;
+}
+
+.enterPlayer input{
+    outline: none;
+    border: 1px solid #C4C4C4;
+    padding: 0.8em;
+    width: 100%;
+    color: #8D8D8D;
+    font-size: 0.9em;
+}
+
+.player-one, .x-symbol{
+    color: #ED9797;
+}
+
+.player-two, .o-symbol{
+    color: #65C5DA;
+}
+
+.x-symbol, 
+.o-symbol{
+    font-weight: bolder;
+}
+
+.start{
+    width: 8em;
+    height: 3em;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #4FA370;
+    font: bolder "Open Sans", sans-serif;
 }
