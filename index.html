@@ -1,62 +1,77 @@
 <!DOCTYPE html>
-<html lang = "en">
-<head>
+<html lang="en">
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name = "author" content = "Azrielle Pelayo">
-    <meta name = "description" content = "Tic Tac Toe Game">
+    <meta name="author" content="Azrielle Pelayo" />
+    <meta name="description" content="Tic Tac Toe Game" />
 
-    <link rel = "stylesheet" href = "style.css">
-    <script src = "script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Tic-Tac-Toe Game</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <p class="title">TicTacToe</p>
-        
+      <p class="title">TicTacToe</p>
+        <div class="formContainer">
         <form action="" class="enterPlayer">
-            <p class = "mode">PLAYER VS PLAYER</p>
-            <ul>
-                <li>
-                    <div class="player">
-                        <label for = "player-one" class = "player-one">PLAYER ONE NAME</label>
-                        <p class="x-symbol">X</p>
-                    </div>
-                    <input type = "text" name = "player-one" id = "playerOne" placeholder="Default to Player 1">
-                </li>
-                <li>
-                    <div class="player">
-                        <label for = "player-two" class = "player-two">PLAYER TWO NAME</label>
-                        <p class="o-symbol">O</p>
-                    </div>
-                    <input type = "text" name = "player-two" id = "playerTwo" placeholder="Default to Player 2">
-                </li>
-            </ul>
-            <button type = "button" class = "start">START</button>
-           
+          <p class="mode">PLAYER VS PLAYER</p>
+          <ul>
+            <li>
+              <div class="player">
+                <label for="player-one" class="player-one"
+                  >PLAYER ONE NAME</label
+                >
+                <p class="x-symbol">X</p>
+              </div>
+              <input
+                type="text"
+                name="player-one"
+                id="playerOne"
+                placeholder="Default to Player 1"
+              />
+            </li>
+            <li>
+              <div class="player">
+                <label for="player-two" class="player-two"
+                  >PLAYER TWO NAME</label
+                >
+                <p class="o-symbol">O</p>
+              </div>
+              <input
+                type="text"
+                name="player-two"
+                id="playerTwo"
+                placeholder="Default to Player 2"
+              />
+            </li>
+          </ul>
+          <button type="button" class="start">START</button>
         </form>
-        <div class="playerDisplay"></div>
-        <div class="game">
-            <div class="gameContainer">
-                <div class="0"><p></p></div>
-                <div class="1"><p></p></div>
-                <div class="2"><p></p></div>
-                <div class="3"><p></p></div>
-                <div class="4"><p></p></div>
-                <div class="5"><p></p></div>
-                <div class="6"><p></p></div>   
-                <div class="7"><p></p></div>
-                <div class="8"><p></p></div>
-            </div>
-
-            <div class="resultContainer">
-                <button type = "button" class="playAgain">PLAY AGAIN</button>
-            </div>
+        </div>
+      <div class="playerDisplay"></div>
+      <div class="game">
+        <div class="gameContainer">
+          <div class="0"><p></p></div>
+          <div class="1"><p></p></div>
+          <div class="2"><p></p></div>
+          <div class="3"><p></p></div>
+          <div class="4"><p></p></div>
+          <div class="5"><p></p></div>
+          <div class="6"><p></p></div>
+          <div class="7"><p></p></div>
+          <div class="8"><p></p></div>
         </div>
 
+        <div class="resultContainer">
+          <button type="button" class="playAgain">PLAY AGAIN</button>
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
