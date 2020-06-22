@@ -4,40 +4,17 @@ const Gameboard = (() => {
   let playerDisplay = document.querySelector(".playerDisplay");
   let resultContainer = document.querySelector(".resultContainer");
   let playAgainButton = document.querySelector(".playAgain");
-  let startButton = document.querySelector(".start");
-  let formContainer = document.querySelector(".formContainer");
-  let playerOne = document.querySelector("#playerOne");
-  let playerTwo = document.querySelector("#playerTwo");
   let turn = null;
   let gameboard = ["", "", "", "", "", "", "", "", ""];
-  
+
   const player = (name, move, winner) => {
     return { name, move, winner };
   };
 
-  function displayForm() {
-    gameContainer.style.display = "none";
-    playerDisplay.style.display = "none";
-    formContainer.style.display = "block";
-    playerOne.value = "";
-    playerTwo.value = "";
-    pressToStart();
-  }
+  const player1 = player("Player 1", "X", false);
+  const player2 = player("Player 2", "O", false);
 
-  function pressToStart() {
-    startButton.addEventListener("click", (event) => {
-      if (event.target == event.currentTarget) {
-        formContainer.style.display = "none";
-        playerDisplay.style.display = "flex";
-        gameContainer.style.display = "grid";
-        const player1 = player(playerOne.value || "Player 1", "X", false);
-        const player2 = player(playerTwo.value || "Player 2", "O", false);
-        startGame(player1, player2);
-      }
-    });
-  }
-
-  function startGame(player1, player2) {
+  function startGame() {
     turn = true;
     let player = null;
     displayPlayerTurn(player1);
@@ -61,7 +38,6 @@ const Gameboard = (() => {
           }
         }
       }
-      event.stopPropagation();
     });
   }
 
@@ -75,10 +51,10 @@ const Gameboard = (() => {
       renderArray();
       resultContainer.style.visibility = "hidden";
       turn = true;
-      displayForm();
+      startGame();
     });
   }
-  
+
   function renderArray() {
     for (let i = 0; i < 9; i++) {
       div[i].firstChild.textContent = gameboard[i];
@@ -100,28 +76,20 @@ const Gameboard = (() => {
       pattern4 = [0, 4, 8],
       pattern5 = [2, 4, 6];
     if (gameboard.slice(0, 3).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (gameboard.slice(3, 6).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (gameboard.slice(6).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (pattern1.map((index) => gameboard[index]).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (pattern2.map((index) => gameboard[index]).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (pattern3.map((index) => gameboard[index]).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (pattern4.map((index) => gameboard[index]).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     } else if (pattern5.map((index) => gameboard[index]).every(isWinner)) {
-      //displayWinner(winner);
       return true;
     }
   }
@@ -149,7 +117,7 @@ const Gameboard = (() => {
     playerDisplay.style.backgroundColor = "#8D8D8D";
     playAnotherGame();
   }
-  return { displayForm };
+  return { startGame };
 })();
 
-Gameboard.displayForm();
+Gameboard.startGame();
